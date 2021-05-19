@@ -7,7 +7,7 @@ app.use(express.json())
 app.listen(PORT,
     ()=>{console.log(`it is alive on http://localhost:${PORT}`)})
 
-    app.get('/calculate',(req,res)=>{
+    app.post('/calculate',(req,res)=>{
         let firstName = req.body.firstName;
         let secondName = req.body.secondName;
 
