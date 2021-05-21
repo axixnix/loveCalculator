@@ -24,18 +24,19 @@ app.listen(PORT,
         }
 
 
-        let name1 =[ firstName.split('')]
-        let name2 = [secondName.split('')]
+        let name1 =[ ...firstName.split('')]
+        let name2 = [...secondName.split('')]
         let name1length = name1.length
         let name2length = name2.length
         let intersection = performIntersection(name1,name2)
         let intLength = intersection.length
         let result =((intLength * 2)/(name1length + name2length)) * 100
+        result = round(result)
 
         res.status(200).send({
             firstName:`${firstName}`,
             secondName:`${secondName}`,
-            result:`${result}`
+            result:`${result}% compatibility!`
         })
         
     })
@@ -59,4 +60,9 @@ app.listen(PORT,
         
         return intersectionResult;
     
+    }
+
+    function round(num) {
+        var m = Number((Math.abs(num) * 100).toPrecision(15));
+        return Math.round(m) / 100 * Math.sign(num);
     }
